@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package pb;
+
+
+message RegRequest {
+    // @inject_tag: json:"name" validate:"required" form:"name" errorMsg:"用户名必填"
+    string name = 1;
+    // @inject_tag: json:"pwd" validate:"required,min=6" form:"pwd" errorMsg:"密码至少位6位"
+    string pwd = 2;
+}
+
+message RegResponse {
+    string data = 1;
+}
+
+service UserService {
+    rpc Registry(RegRequest) returns (RegResponse);
+}
