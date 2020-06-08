@@ -11,6 +11,7 @@ func NewGinRouter(prodGrpcSrvs ...interface{}) (router *gin.Engine) {
 	router.NoMethod(middleware.HandleNotFound)
 	router.NoRoute(middleware.HandleNotFound)
 	router.Use(middleware.ErrHandler())
+	router.Use(middleware.SetUp())
 	//for _, s := range prodGrpcSrvs {
 	//	router.Use(middleware.AddGRPCServer(s))
 	//}
